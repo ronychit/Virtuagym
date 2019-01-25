@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 from .models import  Exercise,Days,WorkoutPlan,PlanDaysExercise,User
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
 
 class ExerciseSerializer(serializers.ModelSerializer):
     """Serializer class for Excercise Model Data"""
