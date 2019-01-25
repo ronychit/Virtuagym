@@ -7,16 +7,19 @@ from rest_framework.permissions import IsAuthenticated
 
 class ExerciseViewSet(viewsets.ModelViewSet):
     """API for Exercise endpoint - Load,Add,Update,Remove Exercises"""
+    permission_classes = (IsAuthenticated,)
     queryset = Exercise.objects.all()
     serializer_class = serializers.ExerciseSerializer
 
 class DaysViewSet(viewsets.ModelViewSet):
     """API for Days endpoint - Load,Add,Update,Remove Days"""
+    permission_classes = (IsAuthenticated,)
     queryset = Days.objects.all()
     serializer_class = serializers.DaysSerializer
 
 class WorkoutPlanViewSet(viewsets.ModelViewSet):
     """API for workout plan endpoint - Load,Add,Update,Remove Plans"""
+    permission_classes = (IsAuthenticated,)
     queryset = WorkoutPlan.objects.all()
     serializer_class = serializers.WorkoutPlanSerializer
 
@@ -71,8 +74,8 @@ class UserPlanViewSet(viewsets.ModelViewSet):
             return Response("Plans not removed for the user, Error : " + repr(e),status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class PlanDaysDetailsViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
     """API for Plan days endpoint - Add,Delete days from a workout plan"""
+    permission_classes = (IsAuthenticated,)
     queryset = PlanDaysExercise.objects.select_related().all()
     serializer_class = serializers.PlanDetailsSerializer
 
@@ -105,6 +108,7 @@ class PlanDaysDetailsViewSet(viewsets.ModelViewSet):
 
 class PlanExerciseDetailsViewSet(viewsets.ModelViewSet):
     """API for Plan Exercise endpoint - Add,Delete Exercises from a Day in workout plan"""
+    permission_classes = (IsAuthenticated,)
     queryset = PlanDaysExercise.objects.select_related().all()
     serializer_class = serializers.PlanDetailsSerializer
 
